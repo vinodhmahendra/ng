@@ -10,6 +10,8 @@ import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { ListTodosComponent } from './list-todos/list-todos.component';
 import { SearchTodoPipe } from './search-todo.pipe';
+import { MenuComponent } from './menu/menu.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { SearchTodoPipe } from './search-todo.pipe';
     LoginComponent,
     ErrorComponent,
     ListTodosComponent,
-    SearchTodoPipe
+    SearchTodoPipe,
+    MenuComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
