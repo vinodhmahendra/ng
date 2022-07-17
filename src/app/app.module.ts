@@ -12,6 +12,7 @@ import { ListTodosComponent } from './list-todos/list-todos.component';
 import { SearchTodoPipe } from './search-todo.pipe';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FooterComponent } from './footer/footer.component';
     ListTodosComponent,
     SearchTodoPipe,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
