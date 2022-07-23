@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TodoDataService } from '../service/data/todo-data.service';
 
 export class Todo {
   constructor(
@@ -19,11 +20,13 @@ export class ListTodosComponent implements OnInit {
 
   public searchTodo: any = '';
   
-  todos = [
-    new Todo(1, 'learn to paint',false,new Date()),
-    new Todo(2, 'learn to sing',false,new Date()),
-    new Todo(3, 'learn to cook',false,new Date())
-  ];
+  todos: Todo[]
+  message: string
+  // [
+  //   new Todo(1, 'learn to paint',false,new Date()),
+  //   new Todo(2, 'learn to sing',false,new Date()),
+  //   new Todo(3, 'learn to cook',false,new Date())
+  // ];
     // todos = [
     //   {id:1, description: 'Learn to paint'},
     //   {id:2, description: 'Learn to sing'},
@@ -34,9 +37,33 @@ export class ListTodosComponent implements OnInit {
   //   id : 1,
   //   description: 'Learn to paint'
   // }
-  constructor() { }
+  constructor(
+    private todoDataService: TodoDataService
+  ) { }
 
   ngOnInit() {
+   this.refreshTodos();
+  }
+
+  refreshTodos(){
+    this.todoDataService.retrieveAllTodos('vinodh').subscribe(
+      response => {
+        console.log(response);
+        this.todos = response;
+      }
+    )
+  }
+  deleteTodo(id) {
+    console.log(`delete todo ${id}`);
+    this.todoDataService.deleteTodo('vinodh',id).subscribe(
+      response => {
+        console.log(response); 
+        this.message = `Delete of Todo ${id} Successful!`;
+        this.refreshTodos();
+      }
+    )
+    // this.message = `Delete of Todo ${id} Successful!`;
+    // this.refreshTodos();
   }
 
 }
