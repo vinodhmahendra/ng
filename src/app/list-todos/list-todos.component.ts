@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoDataService } from '../service/data/todo-data.service';
+import { Router } from '@angular/router';
 
 export class Todo {
   constructor(
@@ -38,7 +39,8 @@ export class ListTodosComponent implements OnInit {
   //   description: 'Learn to paint'
   // }
   constructor(
-    private todoDataService: TodoDataService
+    private todoDataService: TodoDataService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -62,8 +64,13 @@ export class ListTodosComponent implements OnInit {
         this.refreshTodos();
       }
     )
-    // this.message = `Delete of Todo ${id} Successful!`;
-    // this.refreshTodos();
   }
+
+  updateTodo(id) {
+    console.log(`update ${id}`);
+    this.router.navigate(['todos',id])    
+
+  }
+
 
 }
